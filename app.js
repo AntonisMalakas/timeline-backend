@@ -11,7 +11,7 @@ var http = require('http'),
 
 require('dotenv').config();
 
-var isProduction = process.env.NODE_ENV === 'production';
+var isProduction = true//process.env.NODE_ENV === 'production';
 
 // Create global app object
 var app = express();
@@ -33,7 +33,7 @@ if (!isProduction) {
 }
 
 if (isProduction) {
-  mongoose.connect(process.env,MONGODB_URI);
+  mongoose.connect('mongodb://admin:mongodb70994822@cluster0-shard-00-00.7m5pi.mongodb.net:27017,cluster0-shard-00-01.7m5pi.mongodb.net:27017,cluster0-shard-00-02.7m5pi.mongodb.net:27017/conduit?ssl=true&replicaSet=atlas-pcm6hi-shard-0&authSource=admin&retryWrites=true&w=majority');
 } else {
   mongoose.connect('mongodb://localhost/conduit');
   mongoose.set('debug', true);
