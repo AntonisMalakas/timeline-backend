@@ -49,7 +49,7 @@ router.get('/', auth.optional, function (req, res, next) {
     req.query.author ? User.findOne({ username: req.query.author }) : null,
     req.query.favorited ? User.findOne({ username: req.query.favorited }) : null
   ]).then(function (results) {
-    console.log(results)
+    // console.log(results)
     var author = results[0];
     var favoriter = results[1];
 
@@ -132,7 +132,7 @@ router.post('/', auth.required, function (req, res, next) {
     article.author = user;
 
     return article.save().then(function () {
-      console.log(article.author);
+      // console.log(article.author);
       return res.json({ article: article.toJSONFor(user) });
     });
   }).catch(next);
